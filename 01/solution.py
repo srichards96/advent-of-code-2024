@@ -6,7 +6,7 @@ def readInputFile():
     filename = os.path.join(dir, "input.txt")
 
     with open(filename) as file:
-        return [line for line in file]
+        return [line for line in file.read().split("\n") if line != ""]
 
 
 def part1():
@@ -14,7 +14,7 @@ def part1():
     right: list[int] = []
 
     for line in readInputFile():
-        l, r = map(lambda s: int(s), line.replace("\n", "").split("   "))
+        l, r = map(lambda s: int(s), line.split("   "))
         left.append(l)
         right.append(r)
 
@@ -34,7 +34,7 @@ def part2():
     right: dict[int, int] = dict()
 
     for line in readInputFile():
-        l, r = map(lambda s: int(s), line.replace("\n", "").split("   "))
+        l, r = map(lambda s: int(s), line.split("   "))
         left.append(l)
 
         if r not in right:
