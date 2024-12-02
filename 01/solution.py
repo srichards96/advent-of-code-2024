@@ -14,9 +14,9 @@ def part1():
     right: list[int] = []
 
     for line in readInputFile():
-        l, r = line.replace("\n", "").split("   ")
-        left.append(int(l))
-        right.append(int(r))
+        l, r = map(lambda s: int(s), line.replace("\n", "").split("   "))
+        left.append(l)
+        right.append(r)
 
     left.sort()
     right.sort()
@@ -34,13 +34,12 @@ def part2():
     right: dict[int, int] = dict()
 
     for line in readInputFile():
-        l, r = line.replace("\n", "").split("   ")
-        left.append(int(l))
+        l, r = map(lambda s: int(s), line.replace("\n", "").split("   "))
+        left.append(l)
 
-        rInt = int(r)
-        if rInt not in right:
-            right[rInt] = 0
-        right[rInt] += 1
+        if r not in right:
+            right[r] = 0
+        right[r] += 1
 
     similarity = 0
 
