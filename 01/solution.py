@@ -6,14 +6,16 @@ def readInputFile():
     filename = os.path.join(dir, "input.txt")
 
     with open(filename) as file:
-        return [line for line in file.read().split("\n") if line != ""]
+        return file.read()
 
 
 def part1():
     left: list[int] = []
     right: list[int] = []
 
-    for line in readInputFile():
+    lines = [line for line in readInputFile().split("\n") if line != ""]
+
+    for line in lines:
         l, r = map(lambda s: int(s), line.split("   "))
         left.append(l)
         right.append(r)
@@ -33,7 +35,9 @@ def part2():
     left: list[int] = []
     right: dict[int, int] = dict()
 
-    for line in readInputFile():
+    lines = [line for line in readInputFile().split("\n") if line != ""]
+
+    for line in lines:
         l, r = map(lambda s: int(s), line.split("   "))
         left.append(l)
 

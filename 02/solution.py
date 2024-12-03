@@ -6,7 +6,7 @@ def readInputFile():
     filename = os.path.join(dir, "input.txt")
 
     with open(filename) as file:
-        return file.read().split("\n")
+        return file.read()
 
 
 def isSafe(levels: list[int]):
@@ -62,7 +62,8 @@ def isSafeWith1Skip(levels: list[int]):
 def part1():
     safeCount = 0
 
-    for line in readInputFile():
+    input = readInputFile()
+    for line in input.split("\n"):
         levels = list(map(lambda s: int(s), line.split(" ")))
 
         if isSafe(levels):
@@ -74,7 +75,8 @@ def part1():
 def part2():
     safeCount = 0
 
-    for line in readInputFile():
+    input = readInputFile()
+    for line in input.split("\n"):
         levels = list(map(lambda s: int(s), line.split(" ")))
 
         if isSafeWith1Skip(levels):
