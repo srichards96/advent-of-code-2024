@@ -6,7 +6,7 @@ def readInputFile():
     filename = os.path.join(dir, "input.txt")
 
     with open(filename) as file:
-        return file.read().replace("\n", "")
+        return file.read()
 
 
 def part1():
@@ -14,7 +14,7 @@ def part1():
 
     # To length -7 since mul(x,y) needs at least 8 chars
     i = 0
-    input = readInputFile()
+    input = readInputFile().replace("\n", "")
     while i < len(input) - 7:
         if input[i : i + 4] == "mul(":
             i += 4
@@ -58,7 +58,7 @@ def part2():
 
     # To length -7 since mul(x,y) needs at least 8 chars
     i = 0
-    input = readInputFile()
+    input = readInputFile().replace("\n", "")
     do = True
     while i < len(input) - 7:
         if input[i : i + 4] == "do()":
