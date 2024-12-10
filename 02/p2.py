@@ -1,12 +1,10 @@
 import os
 
+dir = os.path.dirname(__file__)
+filename = os.path.join(dir, "input.txt")
 
-def readInputFile():
-    dir = os.path.dirname(__file__)
-    filename = os.path.join(dir, "input.txt")
-
-    with open(filename) as file:
-        return file.read()
+with open(filename) as file:
+    input = file.read().strip().split("\n")
 
 
 def isSafe(levels: list[int]):
@@ -59,31 +57,12 @@ def isSafeWith1Skip(levels: list[int]):
     return safe
 
 
-def part1():
-    safeCount = 0
+safeCount = 0
 
-    input = readInputFile()
-    for line in input.split("\n"):
-        levels = list(map(lambda s: int(s), line.split(" ")))
+for line in input:
+    levels = list(map(lambda s: int(s), line.split(" ")))
 
-        if isSafe(levels):
-            safeCount += 1
+    if isSafeWith1Skip(levels):
+        safeCount += 1
 
-    return safeCount
-
-
-def part2():
-    safeCount = 0
-
-    input = readInputFile()
-    for line in input.split("\n"):
-        levels = list(map(lambda s: int(s), line.split(" ")))
-
-        if isSafeWith1Skip(levels):
-            safeCount += 1
-
-    return safeCount
-
-
-print(part1())
-print(part2())
+print(safeCount)

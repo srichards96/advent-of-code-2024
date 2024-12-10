@@ -4,10 +4,10 @@ dir = os.path.dirname(__file__)
 filename = os.path.join(dir, "input.txt")
 
 with open(filename) as file:
-    grid = list(map(lambda s: list(s), file.read().strip().split("\n")))
+    input = list(map(lambda s: list(s), file.read().strip().split("\n")))
 
-MAX_Y = len(grid) - 1
-MAX_X = len(grid[0]) - 1
+MAX_Y = len(input) - 1
+MAX_X = len(input[0]) - 1
 
 
 def find_guard():
@@ -15,7 +15,7 @@ def find_guard():
 
     for y in range(MAX_Y + 1):
         for x in range(MAX_X + 1):
-            char = grid[y][x]
+            char = input[y][x]
             if char in dir_chars:
                 return (x, y, dir_chars.index(char))
 
@@ -44,7 +44,7 @@ while True:
     if next_y < 0 or next_y > MAX_Y:
         break
 
-    if grid[next_y][next_x] == "#":
+    if input[next_y][next_x] == "#":
         dir = (dir + 1) % 4
     else:
         x = next_x
